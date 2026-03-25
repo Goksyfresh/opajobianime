@@ -128,12 +128,14 @@ export default function HeroSection() {
   });
   }, [mousePosition]);
 
+  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+
   return (
     <div className="min-h-screen bg-[#F5F1E8] relative pt-14">
       {/* Decorative Elements */}
       <div
         style={{
-          top: `${Math.max(200, Math.min(mousePosition.y, window.innerHeight - 200))}px`,
+          top: `${Math.max(200, Math.min(mousePosition.y, windowHeight - 200))}px`,
 
           transform: "translateY(-50%)",
         }}
@@ -149,7 +151,7 @@ export default function HeroSection() {
 
       <div
         style={{
-          top: `${Math.max(200, Math.min(mousePosition.y, window.innerHeight - 200))}px`,
+          top: `${Math.max(200, Math.min(mousePosition.y, windowHeight - 200))}px`,
           transform: "translateY(-50%)",
         }}
         className="absolute right-8"
