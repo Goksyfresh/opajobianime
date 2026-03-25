@@ -90,8 +90,10 @@ useEffect(() => {
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
   }, [archives.length]);
   useGSAP(() => {
     if (active !== null && containerRef.current) {
@@ -173,7 +175,9 @@ useGSAP(()=>{
 //             })
 // },[])
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
   return (
      <div className="shake min-h-screen overflow-y-hidden font-mono text-sm"  style={{
