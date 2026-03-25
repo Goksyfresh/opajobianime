@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { use, useRef, useState } from "react";
 import { ScrollTrigger, SplitText } from "gsap/all";
+import { useMediaQuery } from "react-responsive";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function HeroSection() {
@@ -11,6 +12,7 @@ export default function HeroSection() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isInSection, setIsInSection] = useState(false);
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
 
   const [relativeMousePosition, setRelativeMousePosition] = useState({
     x: 0,
@@ -129,6 +131,17 @@ export default function HeroSection() {
   }, [mousePosition]);
 
   const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+
+  if (!isTabletOrDesktop) {
+    return (
+      <div className="min-h-screen bg-[#F5F1E8] flex items-center justify-center p-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-black mb-4">Switch to a Larger Device</h2>
+          <p className="text-black/70">This animation is best viewed on tablet or desktop for the full interactive experience.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F5F1E8] relative pt-14">

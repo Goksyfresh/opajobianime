@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
 import photo1 from '../../public/images/poster1.jpg'
 import photo2 from '../../public/images/poster2.jpg'
 import photo3 from '../../public/images/poster3.jpg'
@@ -192,7 +193,8 @@ export default function ImageHover() {
   const [time, setTime] = useState(new Date());
 
 
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState<number | null>(null)
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
   
 
   useEffect(() => {
@@ -233,8 +235,22 @@ useGSAP(()=>{
 },[activeImage])
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
+
+  if (!isTabletOrDesktop) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center p-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-black mb-4">Switch to a Larger Device</h2>
+          <p className="text-black/70">This animation is best viewed on tablet or desktop for the full interactive experience.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
      <div className="min-h-screen font-mono text-sm"  style={{
         backgroundColor: 'var(--background-color)',

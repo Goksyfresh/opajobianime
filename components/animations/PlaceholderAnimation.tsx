@@ -10,7 +10,20 @@
 
 "use client";
 
+import { useMediaQuery } from "react-responsive";
+
 export default function PlaceholderAnimation() {
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
+
+  if (!isTabletOrDesktop) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-6">
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">Switch to a Larger Device</h2>
+        <p className="text-center text-neutral-600 dark:text-neutral-400">This animation is best viewed on tablet or desktop for the full interactive experience.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-4">
       {/* Animated placeholder grid */}

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Play } from "lucide-react";
+import { useMediaQuery } from "react-responsive";
 
 import video1 from '../../public/images/poster1.jpg'
 import video2 from '../../public/images/poster2.jpg'
@@ -43,6 +44,18 @@ const projects = [
 export default function Portfolio() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
+
+  if (!isTabletOrDesktop) {
+    return (
+      <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center p-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-black mb-4">Switch to a Larger Device</h2>
+          <p className="text-black/70">This animation is best viewed on tablet or desktop for the full interactive experience.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] font-sans">
