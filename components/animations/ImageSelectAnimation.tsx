@@ -52,7 +52,7 @@ const onHoverOut = () => {
       timeZone: 'Africa/Lagos'
     }).toUpperCase();
   };
-const containerRef = useRef(null)
+const containerRef = useRef<HTMLDivElement>(null)
   const archives = [
     { id: 1, img: photo1, color: '#e74c3c', alt: 'Fashion Archive 1' },
     { id: 2, img: photo2, color: '#e67e22', alt: 'Fashion Archive 2' },
@@ -267,29 +267,6 @@ useGSAP(()=>{
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 border-t border-black bg-white px-6 py-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold">OPAJOBI©</h2>
-          
-          <nav className="flex gap-8 opacity-0 text-xs">
-            <Link href="mailto:opajobioyegokeoyebola@gmail.com" className="hover:opacity-50">HELLO@OPAJOBI.COM</Link>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-50">LINKEDIN</Link>
-            <Link href="https://are.na" target="_blank" rel="noopener noreferrer" className="hover:opacity-50">ARE.NA</Link>
-            <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-50">TWITTER</Link>
-            <Link href="https://spotify.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-50">SPOTIFY</Link>
-          </nav>
-
-          <button onClick={scrollToTop} className="flex items-center gap-2 text-xs hover:opacity-50">
-            BACK TO TOP
-            <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white">
-              ↑
-            </div>
-          </button>
-        </div>
-      </footer>
-   
-    
     </div>
   );
 }

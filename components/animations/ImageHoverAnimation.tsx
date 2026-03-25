@@ -318,7 +318,7 @@ useGSAP(()=>{
       </main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 border-t border-black bg-white px-6 py-4">
+      {/* <footer className="fixed bottom-0 left-0 right-0 border-t border-black bg-white px-6 py-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold">OPAJOBI©</h2>
           
@@ -337,7 +337,7 @@ useGSAP(()=>{
             </div>
           </button>
         </div>
-      </footer>
+      </footer> */}
       {active && activeImage &&(
           <div className='activate absolute top-1/2 left-1/2 -translate-x-1/2 pointer-events-none -translate-y-1/2 '>
       <Image
